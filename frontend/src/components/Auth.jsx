@@ -21,7 +21,7 @@ const Auth = ({ onLogin }) => {
             if (isLogin) {
                 onLogin(response.data.token);
             } else {
-                setMessage('Registration successful! You can now log in.');
+                setMessage('Registration successful!  You can now log in.');
                 setIsLogin(true);
             }
         } catch (err) {

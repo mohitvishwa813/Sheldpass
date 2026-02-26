@@ -26,7 +26,7 @@ const Auth = ({ onLogin }) => {
             }
         } catch (err) {
             console.error('[AUTH ERROR]', err);
-            const errMsg = err.response?.data?.message || 'Connection to server failed. Please ensure the backend is running.';
+            const errMsg = err.response?.data?.message || 'Connectio n to server failed. Please ensure the backend is running.';
             setMessage(errMsg);
         } finally {
             setLoading(false);

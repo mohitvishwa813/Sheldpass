@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import api from '../services/api';
-import { Mail, Lock, User as UserIcon, LogIn, UserPlus, Shield } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, LogIn, UserPlus, Shield, ArrowLeft } from 'lucide-react';
 
 const Auth = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -9,6 +9,13 @@ const Auth = ({ onLogin }) => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state?.mode === 'signup') {
+            setIsLogin(false);
+        }
+    }, [location]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,6 +44,10 @@ const Auth = ({ onLogin }) => {
         <div className="min-h-screen flex items-center justify-center bg-gray-900 w-full p-4">
             <div className="max-w-md w-full bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
                 <div className="p-8">
+                    <Link to="/" className="inline-flex items-center text-gray-400 hover:text-white mb-6 transition-colors text-sm font-medium group">
+                        <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+                        Back to Home
+                    </Link>
                     <div className="flex flex-col items-center mb-8">
                         <Link to="/" className="flex items-center space-x-2 mb-8 group">
                             <div className="bg-indigo-600 p-2 rounded-lg shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">

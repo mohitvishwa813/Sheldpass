@@ -16,7 +16,7 @@ const LandingPage = () => {
                     </Link>
                     <div className="flex items-center space-x-6">
                         <Link to="/login" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign In</Link>
-                        <Link to="/login" className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 rounded-xl text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95">
+                        <Link to="/login" state={{ mode: 'signup' }} className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 rounded-xl text-sm font-bold transition-all hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95">
                             Get Started
                         </Link>
                     </div>
@@ -39,7 +39,7 @@ const LandingPage = () => {
                         Securely store, manage, and access your digital credentials from anywhere. Built with military-grade encryption and a focus on premium user experience.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link to="/login" className="w-full sm:w-auto px-8 py-4 bg-white text-gray-950 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-all shadow-xl active:scale-95">
+                        <Link to="/login" state={{ mode: 'signup' }} className="w-full sm:w-auto px-8 py-4 bg-white text-gray-950 rounded-2xl font-bold text-lg hover:bg-indigo-50 transition-all shadow-xl active:scale-95">
                             Start Securing Now
                         </Link>
                         <button className="w-full sm:w-auto px-8 py-4 bg-gray-900 text-white border border-gray-800 rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all active:scale-95">

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { encrypt, decrypt } = require('../utils/encryption');
 
 const credentialSchema = new mongoose.Schema({
     platfromusernameOrEmail: {
@@ -18,7 +19,9 @@ const credentialSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        get: decrypt,
+        set: encrypt
     },
     description: {
         type: String,
@@ -34,6 +37,11 @@ const credentialSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-}, { collection: 'Datastore' }); // Based on the user's screenshot
+}, {
+    collection: 'Datastore',
+    toJSON: { getters: true },
+    toObject: { getters: true },
+    runSettersOnQuery: true
+}); // Based on the user's screenshot
 
 module.exports = mongoose.model('Credential', credentialSchema);
